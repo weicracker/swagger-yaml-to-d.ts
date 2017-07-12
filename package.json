@@ -1,0 +1,14 @@
+{
+  "name": "swagger-yaml-to-d.ts",
+  "version": "1.0.0",
+  "description": "swagger conver typescript description file",
+  "main": "index.js",
+  "repository": "git@github.com:weicracker/swagger-yaml-to-d.ts.git",
+  "author": "jiwei <jiwei3778@bjsasc.com>",
+  "license": "MIT",
+  "dependencies": {
+    "electron-docs-linter": "^2.3.3",
+    "electron-typescript-definitions": "^1.2.7",
+    "swagger-js-codegen": "^1.10.1"
+  }
+}
