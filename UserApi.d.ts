@@ -1,5 +1,5 @@
 /**
- * USERAPI
+ * UserApi
  * API 发布管理
  *
  *
@@ -13,7 +13,7 @@
 /// <reference types="node" />
 /// <reference types="http" />
 
-declare namespace USERAPI {
+declare namespace UserApi {
     interface JsonResultSXLOfArrayListOfGroupVO {
         'code': string;
         'data': Array < GroupVO > ;
@@ -496,7 +496,7 @@ declare namespace USERAPI {
         'data': UserIdVO;
         'message': string;
     }
-    class USERAPIController {
+    class UserApiController {
         public getConfimCodeOfEmail(email ? : string, ): Promise < {
             response: http.ClientResponse;body: JsonResultSXLOfEmailVO;
         } > ;

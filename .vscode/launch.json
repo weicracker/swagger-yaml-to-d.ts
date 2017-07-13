@@ -11,6 +11,9 @@
             "program": "${workspaceRoot}\\index.js",
             "outFiles": [
                 "${workspaceRoot}/out/**/*.js"
+            ],
+            "args": [
+                "UserApi","./test/user.json"
             ]
         }
     ]
