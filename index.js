@@ -16,5 +16,5 @@ var tsSourceCode =CodeGen.getCustomCode({
         type:fs.readFileSync('./template/type.mustache', 'utf-8')
     }
 })
-console.log(tsSourceCode);
 fs.writeFileSync("user.d.ts",tsSourceCode,"UTF-8");
+process.exit(0);
