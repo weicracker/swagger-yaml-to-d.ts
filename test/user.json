@@ -1,0 +1,2931 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "API 发布管理",
+        "version": "V0.1.0",
+        "title": "智能制造平台工程门户集成接口",
+        "termsOfService": "developer@bjsasc.com",
+        "contact": {
+            "name": "智能制造开发组"
+        },
+        "license": {}
+    },
+    "host": "10.0.32.106:8087",
+    "basePath": "/aspuser",
+    "tags": [
+        {
+            "name": "user-controller",
+            "description": "平台用户管理"
+        }
+    ],
+    "paths": {
+        "/1.1/code/email": {
+            "get": {
+                "tags": [
+                    "user-controller"
+                ],
+                "summary": "注册用户获取验证码(邮件方式)(修改)",
+                "operationId": "getConfimCodeOfEmail",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "邮箱地址",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/JsonResultSXLOfEmailVO"
+                        }
+                    }
+                }
+            }
+        },
+        "/1.1/code/img": {
+            "get": {
+                "tags": [
+                    "user-controller"
+                ],
+                "summary": "获取图片验证码(修改)",
+                "operationId": "captcha",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "randomNum",
+                        "in": "query",
+                        "description": "随机码",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/JsonResultSXLOfstring"
+                        }
+                    }
+                }
+            }
+        },
+        "/1.1/code/tel": {
+            "get": {
+                "tags": [
+                    "user-controller"
+                ],
+                "summary": "注册用户获取验证码(手机方式)(修改)",
+                "operationId": "getConfimCode",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "telNum",
+                        "in": "query",
+                        "description": "手机号码",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/JsonResultSXLOfstring"
+                        }
+                    }
+                }
+            }
+        },
+        "/1.1/friend/current/friends": {
+            "get": {
+                "tags": [
+                    "user-controller"
+                ],
+                "summary": "获取当前登录用户的好友(无)",
+                "operationId": "findByFriend",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "XASPSESSION",
+                        "in": "header",
+                        "description": "当前用户token",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/JsonResultSXLOfListOfUserFriend1VO"
+                        }
+                    }
+                }
+            }
+        },
+        "/1.1/friends/userIds": {
+            "get": {
+                "tags": [
+                    "user-controller"
+                ],
+                "summary": "获取待确认好友ID(无)",
+                "operationId": "confUserFriendsId",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "XASPSESSION",
+                        "in": "header",
+                        "description": "当前用户token",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/JsonResultSXLOfListOfUserIdVO"
+                        }
+                    }
+                }
+            }
+        },
+        "/1.1/login/current/friends": {
+            "get": {
+                "tags": [
+                    "user-controller"
+                ],
+                "summary": "用户的好友(按照首字母排序)(无)",
+                "operationId": "findByFriendOfLogin",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "XASPSESSION",
+                        "in": "header",
+                        "description": "当前用户token",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/JsonResultSXLOfListOfUserFriendsVO"
+                        }
+                    }
+                }
+            }
+        },
+        "/1.1/org/users/name": {
+            "get": {
+                "tags": [
+                    "user-controller"
+                ],
+                "summary": "获取当前组织下的用户(修改)",
+                "operationId": "queryUsers",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "XASPSESSION",
+                        "in": "header",
+                        "description": "当前用户token",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "用户名",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/JsonResultSXLOfListOfOrgPeo1VO"
+                        }
+                    }
+                }
+            }
+        },
+        "/1.1/user/code/email": {
+            "get": {
+                "tags": [
+                    "user-controller"
+                ],
+                "summary": "验证邮箱验证码是否正确(修改)",
+                "operationId": "confEmail",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "邮箱地址",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "confCode",
+                        "in": "query",
+                        "description": "验证码",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/JsonResultSXLOfstring"
+                        }
+                    }
+                }
+            }
+        },
+        "/1.1/user/code/tel": {
+            "get": {
+                "tags": [
+                    "user-controller"
+                ],
+                "summary": "验证手机验证码是否正确(修改)",
+                "operationId": "confTel",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "telNum",
+                        "in": "query",
+                        "description": "手机号",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "confCode",
+                        "in": "query",
+                        "description": "验证码",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/JsonResultSXLOfstring"
+                        }
+                    }
+                }
+            }
+        },
+        "/1.1/user/friends": {
+            "get": {
+                "tags": [
+                    "user-controller"
+                ],
+                "summary": "获取用户好友(修改)",
+                "operationId": "queryFriends",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "XASPSESSION",
+                        "in": "header",
+                        "description": "当前用户token",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "好友名",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/JsonResultSXLOfListOfUserFriendVO"
+                        }
+                    }
+                }
+            }
+        },
+        "/1.1/user/tooken": {
+            "get": {
+                "tags": [
+                    "user-controller"
+                ],
+                "summary": "获取当前登录用户USERID(无)",
+                "operationId": "getUserId",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "XASPSESSION",
+                        "in": "header",
+                        "description": "当前用户token",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/JsonResultSXLOfUserIdVO"
+                        }
+                    }
+                }
+            }
+        },
+        "/1.1/user/unique/email": {
+            "post": {
+                "tags": [
+                    "user-controller"
+                ],
+                "summary": "验证邮箱唯一性(修改)",
+                "operationId": "uniqueEmail",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "邮箱地址",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/JsonResultSXLOfstring"
+                        }
+                    }
+                }
+            }
+        },
+        "/1.1/user/unique/tel": {
+            "post": {
+                "tags": [
+                    "user-controller"
+                ],
+                "summary": "验证手机唯一性(修改)",
+                "operationId": "uniqueTel",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "telNum",
+                        "in": "query",
+                        "description": "手机号",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/JsonResultSXLOfstring"
+                        }
+                    }
+                }
+            }
+        },
+        "/1.1/user/unique/userCode": {
+            "post": {
+                "tags": [
+                    "user-controller"
+                ],
+                "summary": "验证用户名唯一性(修改)",
+                "operationId": "uniqueConf",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "code",
+                        "description": "用户信息",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/definitions/UserCodeVO"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/JsonResultSXLOfReCofingVO"
+                        }
+                    }
+                }
+            }
+        },
+        "/1.1/users/concernUsers/{userIds}": {
+            "post": {
+                "tags": [
+                    "user-controller"
+                ],
+                "summary": "订阅关注的好友(支持批量)(修改)",
+                "operationId": "concernUsers",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "XASPSESSION",
+                        "in": "header",
+                        "description": "当前用户token",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "userIds",
+                        "in": "path",
+                        "description": "好友ID",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/JsonResultSXLOfstring"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "user-controller"
+                ],
+                "summary": "删除关注的好友(支持批量)(修改)",
+                "operationId": "deleteConcernUsers",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "XASPSESSION",
+                        "in": "header",
+                        "description": "当前用户token",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "userIds",
+                        "in": "path",
+                        "description": "关注的好友ID",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/JsonResultSXLOfstring"
+                        }
+                    }
+                }
+            }
+        },
+        "/1.1/users/concernUsers/{userId}": {
+            "get": {
+                "tags": [
+                    "user-controller"
+                ],
+                "summary": "查询关注的好友(修改)",
+                "operationId": "queryConcernUsers",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "XASPSESSION",
+                        "in": "header",
+                        "description": "当前用户token",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "concernid",
+                        "in": "path",
+                        "description": "关注的好友ID",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/JsonResultSXLOfListOfConcernVO"
+                        }
+                    }
+                }
+            }
+        },
+        "/1.1/users/current": {
+            "get": {
+                "tags": [
+                    "user-controller"
+                ],
+                "summary": "获取当前登录用户的基本信息(无)",
+                "operationId": "currentUser",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "XASPSESSION",
+                        "in": "header",
+                        "description": "当前用户token",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/JsonResultSXLOfCurUserInfoVO"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "user-controller"
+                ],
+                "summary": "修改当前登录用户的基本信息(无)",
+                "operationId": "updateCurrent",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "XASPSESSION",
+                        "in": "header",
+                        "description": "当前用户token",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "userOrgVO",
+                        "description": "个人用户信息",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/definitions/UserOrgVO"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/JsonResultSXLOfUserIdVO"
+                        }
+                    }
+                }
+            }
+        },
+        "/1.1/users/current/org/department": {
+            "get": {
+                "tags": [
+                    "user-controller"
+                ],
+                "summary": "获取当前用户所属组织的信息和组织下的部门信息(无)",
+                "operationId": "currentUserOrgDepartment",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "XASPSESSION",
+                        "in": "header",
+                        "description": "当前用户token",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/JsonResultSXLOfListOfOrgUser1VO"
+                        }
+                    }
+                }
+            }
+        },
+        "/1.1/users/current/orgs": {
+            "get": {
+                "tags": [
+                    "user-controller"
+                ],
+                "summary": "获取当前登录用户的组织(无)",
+                "operationId": "orgs",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "XASPSESSION",
+                        "in": "header",
+                        "description": "当前用户token",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/JsonResultSXLOfListOfOrgVO"
+                        }
+                    }
+                }
+            }
+        },
+        "/1.1/users/current/password": {
+            "put": {
+                "tags": [
+                    "user-controller"
+                ],
+                "summary": "修改当前登录用户的密码(修改)",
+                "operationId": "changePwd",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "XASPSESSION",
+                        "in": "header",
+                        "description": "当前用户token",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "userPassword",
+                        "description": "密码信息",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/definitions/UserPassword"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/JsonResultSXLOfstring"
+                        }
+                    }
+                }
+            }
+        },
+        "/1.1/users/current/password/email": {
+            "put": {
+                "tags": [
+                    "user-controller"
+                ],
+                "summary": "重置用户的密码(邮箱方式)(修改)",
+                "operationId": "getNewPwdByEmail",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "resetPwsEmailVO",
+                        "description": "邮箱",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/definitions/ResetPwsEmailVO"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/JsonResultSXLOfstring"
+                        }
+                    }
+                }
+            }
+        },
+        "/1.1/users/current/password/tel": {
+            "put": {
+                "tags": [
+                    "user-controller"
+                ],
+                "summary": "重置用户的密码(手机方式)(修改)",
+                "operationId": "getNewPwdByTelNum",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "resetPwsVO",
+                        "description": "信息",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/definitions/ResetPwsVO"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/JsonResultSXLOfstring"
+                        }
+                    }
+                }
+            }
+        },
+        "/1.1/users/current/username": {
+            "get": {
+                "tags": [
+                    "user-controller"
+                ],
+                "summary": "根据用户姓名或用户登录名查询用户的详细信息(修改)",
+                "operationId": "currentUserFromName",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "userName",
+                        "in": "query",
+                        "description": "用户姓名",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/JsonResultSXLOfListOfCurrUserNameVO"
+                        }
+                    }
+                }
+            }
+        },
+        "/1.1/users/current/{userId}": {
+            "get": {
+                "tags": [
+                    "user-controller"
+                ],
+                "summary": "获取当前登录用户的基本信息(修改)",
+                "operationId": "getUserInf",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "userId",
+                        "in": "path",
+                        "description": "用户ID",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/JsonResultSXLOfCurUserInfoVO"
+                        }
+                    }
+                }
+            }
+        },
+        "/1.1/users/friends/{userIds}": {
+            "post": {
+                "tags": [
+                    "user-controller"
+                ],
+                "summary": "好友添加(支持批量)(修改)",
+                "operationId": "addFriends",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "XASPSESSION",
+                        "in": "header",
+                        "description": "当前用户token",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "userIds",
+                        "in": "path",
+                        "description": "好友ID",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/JsonResultSXLOfstring"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "user-controller"
+                ],
+                "summary": "删除好友(支持批量)(修改)",
+                "operationId": "deleteFriends",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "XASPSESSION",
+                        "in": "header",
+                        "description": "当前用户token",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "userIds",
+                        "in": "path",
+                        "description": "好友ID",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/JsonResultSXLOfstring"
+                        }
+                    }
+                }
+            }
+        },
+        "/1.1/users/frineds/frgroup": {
+            "get": {
+                "tags": [
+                    "user-controller"
+                ],
+                "summary": "获取当前登录用户好友群组(无)",
+                "operationId": "getFriGroup",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "XASPSESSION",
+                        "in": "header",
+                        "description": "当前用户token",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/JsonResultSXLOfArrayListOfGroupVO"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "user-controller"
+                ],
+                "summary": "新建用户好友群组（默认把当前用户添加到新增的群组）(无)",
+                "operationId": "createFrgroup_1",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "XASPSESSION",
+                        "in": "header",
+                        "description": "当前用户token",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "frgroupvo",
+                        "description": "群组信息",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/definitions/FrgroupVO"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/JsonResultSXLOfFrgroup"
+                        }
+                    }
+                }
+            }
+        },
+        "/1.1/users/frineds/frgroup/{id}": {
+            "get": {
+                "tags": [
+                    "user-controller"
+                ],
+                "summary": "获取群组信息(新增)",
+                "operationId": "searchGroup",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "群组id",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/JsonResultSXLOfListOfGroupVO"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "user-controller"
+                ],
+                "summary": "修改群组(新增)",
+                "operationId": "createFrgroup",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "XASPSESSION",
+                        "in": "header",
+                        "description": "当前用户token",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "群组id",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "name",
+                        "description": "群组名称",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/JsonResultSXLOfGroupIdVO"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "user-controller"
+                ],
+                "summary": "解散群组(无)",
+                "operationId": "delgroup",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "XASPSESSION",
+                        "in": "header",
+                        "description": "当前用户token",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "群组id",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/JsonResultSXLOfstring"
+                        }
+                    }
+                }
+            }
+        },
+        "/1.1/users/frineds/frgroupMember": {
+            "post": {
+                "tags": [
+                    "user-controller"
+                ],
+                "summary": "新增好友群组成员(无)",
+                "operationId": "addMember",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "frgroupMemb",
+                        "description": "成员信息",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/definitions/FrGroupMemb"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/JsonResultSXLOfstring"
+                        }
+                    }
+                }
+            }
+        },
+        "/1.1/users/frineds/frgroupMember/{frgroupMemberId}": {
+            "put": {
+                "tags": [
+                    "user-controller"
+                ],
+                "summary": "修改群成员昵称(新增)",
+                "operationId": "updateFrgroupMember",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "frgroupMemberId",
+                        "in": "path",
+                        "description": "群组成员id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "alias",
+                        "description": "昵称",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/JsonResultSXLOfstring"
+                        }
+                    }
+                }
+            }
+        },
+        "/1.1/users/frineds/frgroupMember/{groupId}": {
+            "get": {
+                "tags": [
+                    "user-controller"
+                ],
+                "summary": "获取群组成员(无)",
+                "operationId": "searchCalendarsByCurrentUser",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "groupId",
+                        "in": "path",
+                        "description": "群组id",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/JsonResultSXLOfListOfFrgroupMemberVO"
+                        }
+                    }
+                }
+            }
+        },
+        "/1.1/users/frineds/frgroupMember/{ids}": {
+            "delete": {
+                "tags": [
+                    "user-controller"
+                ],
+                "summary": "删除一个好友群组里的成员，支持批量删除(无)",
+                "operationId": "delMember",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "XASPSESSION",
+                        "in": "header",
+                        "description": "当前用户token",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "ids",
+                        "in": "path",
+                        "description": "成员表id，多人用逗号隔开",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/JsonResultSXLOfstring"
+                        }
+                    }
+                }
+            }
+        },
+        "/1.1/users/ldapListen": {
+            "get": {
+                "tags": [
+                    "user-controller"
+                ],
+                "summary": "监听Ldap(删除)",
+                "operationId": "ldapListen",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/JsonResultSXLOfstring"
+                        }
+                    }
+                }
+            }
+        },
+        "/1.1/users/orgs/parent": {
+            "get": {
+                "tags": [
+                    "user-controller"
+                ],
+                "summary": "获取当前登录用户的根组织(无)",
+                "operationId": "getforgs",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "XASPSESSION",
+                        "in": "header",
+                        "description": "当前用户token",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/JsonResultSXLOfListOfOrgOnlyVO"
+                        }
+                    }
+                }
+            }
+        },
+        "/1.1/users/regist": {
+            "post": {
+                "tags": [
+                    "user-controller"
+                ],
+                "summary": "注册用户(无)",
+                "operationId": "registPersion",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "user",
+                        "description": "用户信息",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/definitions/User"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/JsonResultSXLOfUserIdVO"
+                        }
+                    }
+                }
+            }
+        },
+        "/1.1/users/uniqueUserCode/que": {
+            "get": {
+                "tags": [
+                    "user-controller"
+                ],
+                "summary": "根据登录名查询用户(非当前登录用户)是否已存在(删除)",
+                "operationId": "queryUsercode",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "XASPSESSION",
+                        "in": "header",
+                        "description": "当前用户token",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "userCode",
+                        "in": "query",
+                        "description": "用户登录名",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/JsonResultSXLOfstring"
+                        }
+                    }
+                }
+            }
+        },
+        "/1.1/users/uniqueUserEmail/que": {
+            "get": {
+                "tags": [
+                    "user-controller"
+                ],
+                "summary": "根据邮箱查询用户(非当前登录用户)是否已存在(删除)",
+                "operationId": "queryUseremail",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "XASPSESSION",
+                        "in": "header",
+                        "description": "当前用户token",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "userEmail",
+                        "in": "query",
+                        "description": "用户邮箱",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/JsonResultSXLOfstring"
+                        }
+                    }
+                }
+            }
+        },
+        "/1.1/users/uniqueUserTel/que": {
+            "get": {
+                "tags": [
+                    "user-controller"
+                ],
+                "summary": "根据电话查询用户(非当前登录用户)是否已存在(删除)",
+                "operationId": "queryUsertel",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "XASPSESSION",
+                        "in": "header",
+                        "description": "当前用户token",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "userTel",
+                        "in": "query",
+                        "description": "用户电话",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/JsonResultSXLOfstring"
+                        }
+                    }
+                }
+            }
+        },
+        "/1.1/users/userCode": {
+            "get": {
+                "tags": [
+                    "user-controller"
+                ],
+                "summary": "查询用户code(修改)",
+                "operationId": "queryUserCode",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/JsonResultSXLOfListOfUserCode1VO"
+                        }
+                    }
+                }
+            }
+        },
+        "/1.1/users/weixin": {
+            "get": {
+                "tags": [
+                    "user-controller"
+                ],
+                "summary": "微信扫码登录(无)",
+                "operationId": "loginByweixin",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "userId",
+                        "in": "query",
+                        "description": "用户id",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/JsonResultSXLOfUriVO"
+                        }
+                    }
+                }
+            }
+        },
+        "/1.1/{userId}/admin": {
+            "put": {
+                "tags": [
+                    "user-controller"
+                ],
+                "summary": "设置或撤销用户的管理员权限(修改)",
+                "operationId": "setAdmin",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "userId",
+                        "in": "path",
+                        "description": "用户ID",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "orgId",
+                        "in": "query",
+                        "description": "组织ID",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "ifAdmin",
+                        "in": "query",
+                        "description": "是否是管理员",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/JsonResultSXLOfstring"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "JsonResultSXLOfArrayListOfGroupVO": {
+            "properties": {
+                "code": {
+                    "type": "string"
+                },
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/GroupVO"
+                    }
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        },
+        "ResetPwsVO": {
+            "required": [
+                "newPwd",
+                "telConfirmCode",
+                "telNum"
+            ],
+            "properties": {
+                "newPwd": {
+                    "type": "string"
+                },
+                "telConfirmCode": {
+                    "type": "string"
+                },
+                "telNum": {
+                    "type": "string"
+                }
+            },
+            "description": "重置密码手机方式vo"
+        },
+        "ReCofingVO": {
+            "required": [
+                "type",
+                "typeValue",
+                "userType"
+            ],
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "description": "账号的注册形式（手机、邮箱）"
+                },
+                "typeValue": {
+                    "type": "string",
+                    "description": "账号的注册值"
+                },
+                "userType": {
+                    "type": "string",
+                    "description": "账号所属的用户类型"
+                }
+            },
+            "description": "账号信息vo"
+        },
+        "FrGroupMemb": {
+            "required": [
+                "groupid",
+                "memberid"
+            ],
+            "properties": {
+                "groupid": {
+                    "type": "string",
+                    "description": "群id"
+                },
+                "memberid": {
+                    "type": "string",
+                    "description": "成员id（id之间用逗号隔开,例如“aa232d3,ddvdf3,dfd222”）"
+                }
+            }
+        },
+        "JsonResultSXLOfstring": {
+            "properties": {
+                "code": {
+                    "type": "string"
+                },
+                "data": {
+                    "type": "string"
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        },
+        "JsonResultSXLOfListOfConcernVO": {
+            "properties": {
+                "code": {
+                    "type": "string"
+                },
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/ConcernVO"
+                    }
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        },
+        "JsonResultSXLOfUriVO": {
+            "properties": {
+                "code": {
+                    "type": "string"
+                },
+                "data": {
+                    "$ref": "#/definitions/UriVO"
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        },
+        "ConcernVO": {
+            "required": [
+                "concernId",
+                "id",
+                "userId"
+            ],
+            "properties": {
+                "concernId": {
+                    "type": "string",
+                    "description": "关注的好友Id"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Id"
+                },
+                "userId": {
+                    "type": "string",
+                    "description": "用戶Id"
+                }
+            },
+            "description": "查找当前用户关注的好友"
+        },
+        "GroupIdVO": {
+            "required": [
+                "id"
+            ],
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Id"
+                }
+            },
+            "description": "群组IdVO"
+        },
+        "UserFriend1VO": {
+            "required": [
+                "id",
+                "img",
+                "name",
+                "perSignature"
+            ],
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Id"
+                },
+                "img": {
+                    "type": "string",
+                    "description": "头像"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "姓名"
+                },
+                "perSignature": {
+                    "type": "string",
+                    "description": "个性签名"
+                }
+            },
+            "description": "获取用户的的好友VO"
+        },
+        "Org1VO": {
+            "required": [
+                "department",
+                "img",
+                "imgLaw",
+                "orgId",
+                "orgName",
+                "parentId",
+                "payId"
+            ],
+            "properties": {
+                "department": {
+                    "type": "array",
+                    "description": "组织中的部门信息",
+                    "items": {
+                        "$ref": "#/definitions/Org1VO"
+                    }
+                },
+                "img": {
+                    "type": "string",
+                    "description": "组织头像"
+                },
+                "imgLaw": {
+                    "type": "string",
+                    "description": "组织营业执照照片"
+                },
+                "orgId": {
+                    "type": "string",
+                    "description": "组织Id"
+                },
+                "orgName": {
+                    "type": "string",
+                    "description": "组织名称"
+                },
+                "parentId": {
+                    "type": "string",
+                    "description": "组织父节点Id"
+                },
+                "payId": {
+                    "type": "string",
+                    "description": "组织纳税登记号"
+                }
+            },
+            "description": "当前登录用户的组织信息VO"
+        },
+        "CurrUserNameVO": {
+            "required": [
+                "email",
+                "img",
+                "name",
+                "tel",
+                "type",
+                "userCode",
+                "userId"
+            ],
+            "properties": {
+                "email": {
+                    "type": "string",
+                    "description": "邮箱"
+                },
+                "img": {
+                    "type": "string",
+                    "description": "头像"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "姓名"
+                },
+                "tel": {
+                    "type": "string",
+                    "description": "电话"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "类型"
+                },
+                "userCode": {
+                    "type": "string",
+                    "description": "账号"
+                },
+                "userId": {
+                    "type": "string",
+                    "description": "Id"
+                }
+            },
+            "description": "根据用户姓名或用户登录名查询用户的详细信息VO"
+        },
+        "EmailVO": {
+            "required": [
+                "email"
+            ],
+            "properties": {
+                "email": {
+                    "type": "string",
+                    "description": "邮箱"
+                }
+            },
+            "description": "邮箱VO"
+        },
+        "JsonResultSXLOfListOfUserFriend1VO": {
+            "properties": {
+                "code": {
+                    "type": "string"
+                },
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/UserFriend1VO"
+                    }
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        },
+        "ResetPwsEmailVO": {
+            "required": [
+                "email",
+                "emailConfirmCode",
+                "newPwd"
+            ],
+            "properties": {
+                "email": {
+                    "type": "string"
+                },
+                "emailConfirmCode": {
+                    "type": "string"
+                },
+                "newPwd": {
+                    "type": "string"
+                }
+            }
+        },
+        "JsonResultSXLOfListOfUserCode1VO": {
+            "properties": {
+                "code": {
+                    "type": "string"
+                },
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/UserCode1VO"
+                    }
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        },
+        "JsonResultSXLOfListOfUserIdVO": {
+            "properties": {
+                "code": {
+                    "type": "string"
+                },
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/UserIdVO"
+                    }
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        },
+        "UserPassword": {
+            "required": [
+                "newPwd",
+                "oldPwd"
+            ],
+            "properties": {
+                "newPwd": {
+                    "type": "string",
+                    "description": "新密码"
+                },
+                "oldPwd": {
+                    "type": "string",
+                    "description": "旧密码"
+                }
+            },
+            "description": "用户密码修改"
+        },
+        "UserCodeVO": {
+            "properties": {
+                "userCode": {
+                    "type": "string",
+                    "description": "用户code"
+                }
+            },
+            "description": "用户code"
+        },
+        "JsonResultSXLOfFrgroup": {
+            "properties": {
+                "code": {
+                    "type": "string"
+                },
+                "data": {
+                    "$ref": "#/definitions/Frgroup"
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        },
+        "JsonResultSXLOfListOfOrgVO": {
+            "properties": {
+                "code": {
+                    "type": "string"
+                },
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/OrgVO"
+                    }
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        },
+        "JsonResultSXLOfGroupIdVO": {
+            "properties": {
+                "code": {
+                    "type": "string"
+                },
+                "data": {
+                    "$ref": "#/definitions/GroupIdVO"
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        },
+        "OrgUser1VO": {
+            "required": [
+                "department",
+                "ifAdmin",
+                "orgAddress",
+                "orgId",
+                "orgImg",
+                "orgImgLaw",
+                "orgName",
+                "orgNumber",
+                "orgParentId",
+                "orgPayId",
+                "orgTel"
+            ],
+            "properties": {
+                "department": {
+                    "type": "array",
+                    "description": "组织中的部门信息",
+                    "items": {
+                        "$ref": "#/definitions/Org1VO"
+                    }
+                },
+                "ifAdmin": {
+                    "type": "string",
+                    "description": "是否是管理员"
+                },
+                "orgAddress": {
+                    "type": "string",
+                    "description": "组织注册地址"
+                },
+                "orgId": {
+                    "type": "string",
+                    "description": "组织Id"
+                },
+                "orgImg": {
+                    "type": "string",
+                    "description": "组织头像"
+                },
+                "orgImgLaw": {
+                    "type": "string",
+                    "description": "组织营业执照照片"
+                },
+                "orgName": {
+                    "type": "string",
+                    "description": "组织名称"
+                },
+                "orgNumber": {
+                    "type": "string",
+                    "description": "组织营业执照号码"
+                },
+                "orgParentId": {
+                    "type": "string",
+                    "description": "组织父节点Id"
+                },
+                "orgPayId": {
+                    "type": "string",
+                    "description": "组织纳税登记号"
+                },
+                "orgTel": {
+                    "type": "string",
+                    "description": "组织电话号码"
+                }
+            },
+            "description": "当前登录用户的组织信息VO"
+        },
+        "JsonResultSXLOfListOfGroupVO": {
+            "properties": {
+                "code": {
+                    "type": "string"
+                },
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/GroupVO"
+                    }
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        },
+        "JsonResultSXLOfListOfOrgOnlyVO": {
+            "properties": {
+                "code": {
+                    "type": "string"
+                },
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/OrgOnlyVO"
+                    }
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        },
+        "UserCode1VO": {
+            "properties": {
+                "code": {
+                    "type": "string",
+                    "description": "用户code"
+                },
+                "codename": {
+                    "type": "string",
+                    "description": "code名称"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "id"
+                }
+            },
+            "description": "用户code"
+        },
+        "UserOrgVO": {
+            "required": [
+                "ifAdmin",
+                "orgAddress",
+                "orgId",
+                "orgImg",
+                "orgImgLaw",
+                "orgName",
+                "orgNumber",
+                "orgParentId",
+                "orgPayId",
+                "orgTel"
+            ],
+            "properties": {
+                "cardId": {
+                    "type": "string",
+                    "description": "身份证号"
+                },
+                "cardIdImg1": {
+                    "type": "string",
+                    "description": "身份证正面照片"
+                },
+                "cardIdImg2": {
+                    "type": "string",
+                    "description": "身份证反面照片"
+                },
+                "cardIdName": {
+                    "type": "string",
+                    "description": "用户真实姓名"
+                },
+                "confirmCode": {
+                    "type": "string",
+                    "description": "验证码"
+                },
+                "email": {
+                    "type": "string",
+                    "description": "用户的邮箱"
+                },
+                "ifAdmin": {
+                    "type": "string",
+                    "description": "是否为管理员，1：是，0：否"
+                },
+                "img": {
+                    "type": "string",
+                    "description": "用户头像"
+                },
+                "online": {
+                    "type": "string",
+                    "description": "是否在线"
+                },
+                "orgAddress": {
+                    "type": "string",
+                    "description": "组织注册地址"
+                },
+                "orgId": {
+                    "type": "string",
+                    "description": "组织ID"
+                },
+                "orgImg": {
+                    "type": "string",
+                    "description": "组织头像信息"
+                },
+                "orgImgLaw": {
+                    "type": "string",
+                    "description": "组织营业执照照片"
+                },
+                "orgName": {
+                    "type": "string",
+                    "description": "组织机构的名称"
+                },
+                "orgNumber": {
+                    "type": "string",
+                    "description": "组织营业执照号码"
+                },
+                "orgParentId": {
+                    "type": "string",
+                    "description": "组织机构上级组织"
+                },
+                "orgPayId": {
+                    "type": "string",
+                    "description": "组织纳税登记号"
+                },
+                "orgTel": {
+                    "type": "string",
+                    "description": "组织电话号码"
+                },
+                "perSignature": {
+                    "type": "string",
+                    "description": "用户个性签名"
+                },
+                "tel": {
+                    "type": "string",
+                    "description": "用户的手机号码"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "个人用户还是企业用户"
+                },
+                "userCode": {
+                    "type": "string",
+                    "description": "用户登录名"
+                },
+                "userId": {
+                    "type": "string",
+                    "description": "用户ID"
+                },
+                "userName": {
+                    "type": "string",
+                    "description": "用户昵称"
+                },
+                "userPassword": {
+                    "type": "string",
+                    "description": "密码"
+                }
+            },
+            "description": "用户信息与组织信息"
+        },
+        "User": {
+            "properties": {
+                "cardId": {
+                    "type": "string",
+                    "description": "身份证号"
+                },
+                "cardIdImg1": {
+                    "type": "string",
+                    "description": "身份证正面照片"
+                },
+                "cardIdImg2": {
+                    "type": "string",
+                    "description": "身份证反面照片"
+                },
+                "cardIdName": {
+                    "type": "string",
+                    "description": "用户真实姓名"
+                },
+                "confirmCode": {
+                    "type": "string",
+                    "description": "验证码"
+                },
+                "email": {
+                    "type": "string",
+                    "description": "用户的邮箱"
+                },
+                "img": {
+                    "type": "string",
+                    "description": "用户头像"
+                },
+                "online": {
+                    "type": "string",
+                    "description": "是否在线"
+                },
+                "perSignature": {
+                    "type": "string",
+                    "description": "用户个性签名"
+                },
+                "tel": {
+                    "type": "string",
+                    "description": "用户的手机号码"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "个人用户还是企业用户"
+                },
+                "userCode": {
+                    "type": "string",
+                    "description": "账号"
+                },
+                "userId": {
+                    "type": "string",
+                    "description": "用户ID"
+                },
+                "userName": {
+                    "type": "string",
+                    "description": "用户名（昵称）"
+                },
+                "userPassword": {
+                    "type": "string",
+                    "description": "密码"
+                }
+            },
+            "description": "用户信息"
+        },
+        "JsonResultSXLOfListOfOrgUser1VO": {
+            "properties": {
+                "code": {
+                    "type": "string"
+                },
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/OrgUser1VO"
+                    }
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        },
+        "Frgroup": {
+            "required": [
+                "count",
+                "createtime",
+                "creator",
+                "id",
+                "img",
+                "logicDelete",
+                "name",
+                "updatatime"
+            ],
+            "properties": {
+                "count": {
+                    "type": "string",
+                    "description": "成员数量（系统自动生成）"
+                },
+                "createtime": {
+                    "type": "string",
+                    "description": "创建时间（系统自动生成）"
+                },
+                "creator": {
+                    "type": "string",
+                    "description": "创建者（系统自动生成）"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "群组ID（系统自动生成）"
+                },
+                "img": {
+                    "type": "string",
+                    "description": "群组图标"
+                },
+                "logicDelete": {
+                    "type": "string",
+                    "description": "是否被逻辑删除（yes,no）"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "名称"
+                },
+                "updatatime": {
+                    "type": "string",
+                    "description": "修改时间（系统自动生成）"
+                }
+            },
+            "description": "用户好友群组"
+        },
+        "JsonResultSXLOfListOfCurrUserNameVO": {
+            "properties": {
+                "code": {
+                    "type": "string"
+                },
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/CurrUserNameVO"
+                    }
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        },
+        "JsonResultSXLOfEmailVO": {
+            "properties": {
+                "code": {
+                    "type": "string"
+                },
+                "data": {
+                    "$ref": "#/definitions/EmailVO"
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        },
+        "UserFriendVO": {
+            "required": [
+                "id",
+                "img",
+                "name"
+            ],
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Id"
+                },
+                "img": {
+                    "type": "string",
+                    "description": "头像"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "姓名"
+                }
+            },
+            "description": "获取用户的的好友VO"
+        },
+        "JsonResultSXLOfCurUserInfoVO": {
+            "properties": {
+                "code": {
+                    "type": "string"
+                },
+                "data": {
+                    "$ref": "#/definitions/CurUserInfoVO"
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        },
+        "JsonResultSXLOfReCofingVO": {
+            "properties": {
+                "code": {
+                    "type": "string"
+                },
+                "data": {
+                    "$ref": "#/definitions/ReCofingVO"
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        },
+        "JsonResultSXLOfListOfFrgroupMemberVO": {
+            "properties": {
+                "code": {
+                    "type": "string"
+                },
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/FrgroupMemberVO"
+                    }
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        },
+        "OrgOnlyVO": {
+            "required": [
+                "img",
+                "orgId",
+                "orgName",
+                "parentId"
+            ],
+            "properties": {
+                "img": {
+                    "type": "string",
+                    "description": "头像"
+                },
+                "orgId": {
+                    "type": "string",
+                    "description": "Id"
+                },
+                "orgName": {
+                    "type": "string",
+                    "description": "名称"
+                },
+                "parentId": {
+                    "type": "string",
+                    "description": "父节点Id"
+                }
+            },
+            "description": "获取当前登录用户的组织获取父节点组织VO"
+        },
+        "UserFriendsVO": {
+            "required": [
+                "friends",
+                "group"
+            ],
+            "properties": {
+                "friends": {
+                    "type": "object",
+                    "description": "通知内容"
+                },
+                "group": {
+                    "type": "string",
+                    "description": "通知内容"
+                }
+            }
+        },
+        "FrgroupMemberVO": {
+            "required": [
+                "conversation",
+                "createtime",
+                "groupid",
+                "id",
+                "img",
+                "memberAlias",
+                "memberid",
+                "name",
+                "power"
+            ],
+            "properties": {
+                "conversation": {
+                    "type": "string",
+                    "description": "对话"
+                },
+                "createtime": {
+                    "type": "string",
+                    "description": "创建时间"
+                },
+                "groupid": {
+                    "type": "string",
+                    "description": "群组Id"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Id"
+                },
+                "img": {
+                    "type": "string",
+                    "description": "头像"
+                },
+                "memberAlias": {
+                    "type": "string",
+                    "description": "成员别名"
+                },
+                "memberid": {
+                    "type": "string",
+                    "description": "成员Id"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "姓名"
+                },
+                "power": {
+                    "type": "string",
+                    "description": "权限"
+                }
+            },
+            "description": "群组成员VO"
+        },
+        "JsonResultSXLOfListOfOrgPeo1VO": {
+            "properties": {
+                "code": {
+                    "type": "string"
+                },
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/OrgPeo1VO"
+                    }
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        },
+        "UriVO": {
+            "required": [
+                "uri"
+            ],
+            "properties": {
+                "uri": {
+                    "type": "string",
+                    "description": "微信uri"
+                }
+            },
+            "description": "微信uriVO"
+        },
+        "CurUserOrgInfoVO": {
+            "required": [
+                "ifadmin",
+                "orgAddress",
+                "orgId",
+                "orgImg",
+                "orgImgLaw",
+                "orgName",
+                "orgNumber",
+                "orgParentId",
+                "orgPayId",
+                "orgTel"
+            ],
+            "properties": {
+                "ifadmin": {
+                    "type": "string",
+                    "description": "是否是管理员"
+                },
+                "orgAddress": {
+                    "type": "string",
+                    "description": "注册地址"
+                },
+                "orgId": {
+                    "type": "string",
+                    "description": "Id"
+                },
+                "orgImg": {
+                    "type": "string",
+                    "description": "头像"
+                },
+                "orgImgLaw": {
+                    "type": "string",
+                    "description": "营业执照照片"
+                },
+                "orgName": {
+                    "type": "string",
+                    "description": "名称"
+                },
+                "orgNumber": {
+                    "type": "string",
+                    "description": "营业执照号码"
+                },
+                "orgParentId": {
+                    "type": "string",
+                    "description": "父节点Id"
+                },
+                "orgPayId": {
+                    "type": "string",
+                    "description": "纳税登记号"
+                },
+                "orgTel": {
+                    "type": "string",
+                    "description": "电话号码"
+                }
+            },
+            "description": "当前登录用户的组织信息VO"
+        },
+        "UserIdVO": {
+            "required": [
+                "userid"
+            ],
+            "properties": {
+                "userid": {
+                    "type": "string",
+                    "description": "用戶Id"
+                }
+            },
+            "description": "用戶IdVO"
+        },
+        "JsonResultSXLOfListOfUserFriendVO": {
+            "properties": {
+                "code": {
+                    "type": "string"
+                },
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/UserFriendVO"
+                    }
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        },
+        "JsonResultSXLOfListOfUserFriendsVO": {
+            "properties": {
+                "code": {
+                    "type": "string"
+                },
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/UserFriendsVO"
+                    }
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        },
+        "GroupVO": {
+            "required": [
+                "count",
+                "createtime",
+                "creator",
+                "id",
+                "img",
+                "name"
+            ],
+            "properties": {
+                "count": {
+                    "type": "string",
+                    "description": "数量"
+                },
+                "createtime": {
+                    "type": "string",
+                    "description": "创建时间"
+                },
+                "creator": {
+                    "type": "string",
+                    "description": "创建者"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Id"
+                },
+                "img": {
+                    "type": "string",
+                    "description": "头像"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "姓名"
+                }
+            },
+            "description": "好友分组VO"
+        },
+        "CurUserInfoVO": {
+            "required": [
+                "cardId",
+                "cardIdImg1",
+                "cardIdImg2",
+                "cardIdName",
+                "changes",
+                "email",
+                "img",
+                "name",
+                "org",
+                "perSignature",
+                "tel",
+                "type",
+                "userCode",
+                "userId"
+            ],
+            "properties": {
+                "cardId": {
+                    "type": "string",
+                    "description": "身份证号"
+                },
+                "cardIdImg1": {
+                    "type": "string",
+                    "description": "身份证正面照片"
+                },
+                "cardIdImg2": {
+                    "type": "string",
+                    "description": "身份证反面照片"
+                },
+                "cardIdName": {
+                    "type": "string",
+                    "description": "身份证姓名"
+                },
+                "changes": {
+                    "type": "string",
+                    "description": "是否改变"
+                },
+                "email": {
+                    "type": "string",
+                    "description": "邮箱"
+                },
+                "img": {
+                    "type": "string",
+                    "description": "头像"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "姓名"
+                },
+                "org": {
+                    "type": "array",
+                    "description": "当前登录用户的组织信息",
+                    "items": {
+                        "$ref": "#/definitions/CurUserOrgInfoVO"
+                    }
+                },
+                "perSignature": {
+                    "type": "string",
+                    "description": "个性签名"
+                },
+                "tel": {
+                    "type": "string",
+                    "description": "电话"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "类型"
+                },
+                "userCode": {
+                    "type": "string",
+                    "description": "账号"
+                },
+                "userId": {
+                    "type": "string",
+                    "description": "Id"
+                }
+            },
+            "description": "当前登录用户的基本信息VO"
+        },
+        "OrgVO": {
+            "required": [
+                "ifAdmin",
+                "img",
+                "orgId",
+                "orgName",
+                "statusOrg",
+                "type"
+            ],
+            "properties": {
+                "ifAdmin": {
+                    "type": "string",
+                    "description": "是否是管理员"
+                },
+                "img": {
+                    "type": "string",
+                    "description": "头像"
+                },
+                "orgId": {
+                    "type": "string",
+                    "description": "Id"
+                },
+                "orgName": {
+                    "type": "string",
+                    "description": "名称"
+                },
+                "statusOrg": {
+                    "type": "string",
+                    "description": "企业是否同意用户加入('0':默认)('1':同意)('2':拒绝)"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "类型"
+                }
+            },
+            "description": "当前登录用户的组织信息VO"
+        },
+        "FrgroupVO": {
+            "required": [
+                "img",
+                "name"
+            ],
+            "properties": {
+                "img": {
+                    "type": "string",
+                    "description": "群组图标"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "名称"
+                }
+            }
+        },
+        "OrgPeo1VO": {
+            "required": [
+                "id",
+                "img",
+                "name"
+            ],
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Id"
+                },
+                "img": {
+                    "type": "string",
+                    "description": "头像"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "姓名"
+                }
+            },
+            "description": "获取当前登录用户的组织VO"
+        },
+        "JsonResultSXLOfUserIdVO": {
+            "properties": {
+                "code": {
+                    "type": "string"
+                },
+                "data": {
+                    "$ref": "#/definitions/UserIdVO"
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

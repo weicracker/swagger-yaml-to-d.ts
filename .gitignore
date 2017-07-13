@@ -1,1 +1,3 @@
-node_modules/
+# Dependency directory
+/node_modules/*
+!/node_modules/swagger-js-codegen

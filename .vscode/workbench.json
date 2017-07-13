@@ -1,0 +1,10 @@
+{
+	"currentWorkbench": {
+		"files": [
+			{
+				"path": "node_modules/swagger-js-codegen/templates/typescript-class.mustache",
+				"alias": " 1 templates/typescript-class.mustache"
+			}
+		]
+	}
+}
