@@ -1,7 +1,7 @@
 var fsextra = require('fs-extra');
 var request = require("request");
 let httpURL = {
-    user: "http://api.bjsasc.com/asp/user/v2/api-docs?group=asp"
+    user: ""
 }
 
 var CodeGen = require('swagger-js-codegen').CodeGen;
