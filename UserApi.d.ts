@@ -7,23 +7,20 @@
  * https://github.com/weicracker/swagger-yaml-to-d.ts
  * Do not edit the class manually.
  */
-
+/*
 /// <reference types="request" />
 /// <reference types="bluebird" />
 /// <reference types="node" />
 /// <reference types="http" />
-
+*/
 declare namespace UserApi {
-    interface JsonResultSXLOfArrayListOfGroupVO {
-        'code': string;
-        'data': Array < GroupVO > ;
-        'message': string;
-    }
+    //重置密码手机方式vo
     interface ResetPwsVO {
         'newPwd': string;
         'telConfirmCode': string;
         'telNum': string;
     }
+    //账号信息vo
     interface ReCofingVO {
         //账号的注册形式（手机、邮箱）
         'type': string;
@@ -32,27 +29,7 @@ declare namespace UserApi {
         //账号所属的用户类型
         'userType': string;
     }
-    interface FrGroupMemb {
-        //群id
-        'groupid': string;
-        //成员id（id之间用逗号隔开,例如“aa232d3,ddvdf3,dfd222”）
-        'memberid': string;
-    }
-    interface JsonResultSXLOfstring {
-        'code': string;
-        'data': string;
-        'message': string;
-    }
-    interface JsonResultSXLOfListOfConcernVO {
-        'code': string;
-        'data': Array < ConcernVO > ;
-        'message': string;
-    }
-    interface JsonResultSXLOfUriVO {
-        'code': string;
-        'data': UriVO;
-        'message': string;
-    }
+    //查找当前用户关注的好友
     interface ConcernVO {
         //关注的好友Id
         'concernId': string;
@@ -61,10 +38,12 @@ declare namespace UserApi {
         //用戶Id
         'userId': string;
     }
+    //群组IdVO
     interface GroupIdVO {
         //Id
         'id': string;
     }
+    //获取用户的的好友VO
     interface UserFriend1VO {
         //Id
         'id': string;
@@ -75,6 +54,7 @@ declare namespace UserApi {
         //个性签名
         'perSignature': string;
     }
+    //当前登录用户的组织信息VO
     interface Org1VO {
         //组织中的部门信息
         'department': Array < Org1VO > ;
@@ -91,6 +71,7 @@ declare namespace UserApi {
         //组织纳税登记号
         'payId': string;
     }
+    //根据用户姓名或用户登录名查询用户的详细信息VO
     interface CurrUserNameVO {
         //邮箱
         'email': string;
@@ -107,55 +88,24 @@ declare namespace UserApi {
         //Id
         'userId': string;
     }
+    //邮箱VO
     interface EmailVO {
         //邮箱
         'email': string;
     }
-    interface JsonResultSXLOfListOfUserFriend1VO {
-        'code': string;
-        'data': Array < UserFriend1VO > ;
-        'message': string;
-    }
-    interface ResetPwsEmailVO {
-        'email': string;
-        'emailConfirmCode': string;
-        'newPwd': string;
-    }
-    interface JsonResultSXLOfListOfUserCode1VO {
-        'code': string;
-        'data': Array < UserCode1VO > ;
-        'message': string;
-    }
-    interface JsonResultSXLOfListOfUserIdVO {
-        'code': string;
-        'data': Array < UserIdVO > ;
-        'message': string;
-    }
+    //用户密码修改
     interface UserPassword {
         //新密码
         'newPwd': string;
         //旧密码
         'oldPwd': string;
     }
+    //用户code
     interface UserCodeVO {
         //用户code
         'userCode': string;
     }
-    interface JsonResultSXLOfFrgroup {
-        'code': string;
-        'data': Frgroup;
-        'message': string;
-    }
-    interface JsonResultSXLOfListOfOrgVO {
-        'code': string;
-        'data': Array < OrgVO > ;
-        'message': string;
-    }
-    interface JsonResultSXLOfGroupIdVO {
-        'code': string;
-        'data': GroupIdVO;
-        'message': string;
-    }
+    //当前登录用户的组织信息VO
     interface OrgUser1VO {
         //组织中的部门信息
         'department': Array < Org1VO > ;
@@ -180,16 +130,7 @@ declare namespace UserApi {
         //组织电话号码
         'orgTel': string;
     }
-    interface JsonResultSXLOfListOfGroupVO {
-        'code': string;
-        'data': Array < GroupVO > ;
-        'message': string;
-    }
-    interface JsonResultSXLOfListOfOrgOnlyVO {
-        'code': string;
-        'data': Array < OrgOnlyVO > ;
-        'message': string;
-    }
+    //用户code
     interface UserCode1VO {
         //用户code
         'code': string;
@@ -198,6 +139,7 @@ declare namespace UserApi {
         //id
         'id': string;
     }
+    //用户信息与组织信息
     interface UserOrgVO {
         //身份证号
         'cardId': string;
@@ -250,6 +192,7 @@ declare namespace UserApi {
         //密码
         'userPassword': string;
     }
+    //用户信息
     interface User {
         //身份证号
         'cardId': string;
@@ -282,11 +225,7 @@ declare namespace UserApi {
         //密码
         'userPassword': string;
     }
-    interface JsonResultSXLOfListOfOrgUser1VO {
-        'code': string;
-        'data': Array < OrgUser1VO > ;
-        'message': string;
-    }
+    //用户好友群组
     interface Frgroup {
         //成员数量（系统自动生成）
         'count': string;
@@ -305,16 +244,7 @@ declare namespace UserApi {
         //修改时间（系统自动生成）
         'updatatime': string;
     }
-    interface JsonResultSXLOfListOfCurrUserNameVO {
-        'code': string;
-        'data': Array < CurrUserNameVO > ;
-        'message': string;
-    }
-    interface JsonResultSXLOfEmailVO {
-        'code': string;
-        'data': EmailVO;
-        'message': string;
-    }
+    //获取用户的的好友VO
     interface UserFriendVO {
         //Id
         'id': string;
@@ -323,21 +253,7 @@ declare namespace UserApi {
         //姓名
         'name': string;
     }
-    interface JsonResultSXLOfCurUserInfoVO {
-        'code': string;
-        'data': CurUserInfoVO;
-        'message': string;
-    }
-    interface JsonResultSXLOfReCofingVO {
-        'code': string;
-        'data': ReCofingVO;
-        'message': string;
-    }
-    interface JsonResultSXLOfListOfFrgroupMemberVO {
-        'code': string;
-        'data': Array < FrgroupMemberVO > ;
-        'message': string;
-    }
+    //获取当前登录用户的组织获取父节点组织VO
     interface OrgOnlyVO {
         //头像
         'img': string;
@@ -348,12 +264,7 @@ declare namespace UserApi {
         //父节点Id
         'parentId': string;
     }
-    interface UserFriendsVO {
-        //通知内容
-        'friends': any;
-        //通知内容
-        'group': string;
-    }
+    //群组成员VO
     interface FrgroupMemberVO {
         //对话
         'conversation': string;
@@ -374,15 +285,12 @@ declare namespace UserApi {
         //权限
         'power': string;
     }
-    interface JsonResultSXLOfListOfOrgPeo1VO {
-        'code': string;
-        'data': Array < OrgPeo1VO > ;
-        'message': string;
-    }
+    //微信uriVO
     interface UriVO {
         //微信uri
         'uri': string;
     }
+    //当前登录用户的组织信息VO
     interface CurUserOrgInfoVO {
         //是否是管理员
         'ifadmin': string;
@@ -405,20 +313,12 @@ declare namespace UserApi {
         //电话号码
         'orgTel': string;
     }
+    //用戶IdVO
     interface UserIdVO {
         //用戶Id
         'userid': string;
     }
-    interface JsonResultSXLOfListOfUserFriendVO {
-        'code': string;
-        'data': Array < UserFriendVO > ;
-        'message': string;
-    }
-    interface JsonResultSXLOfListOfUserFriendsVO {
-        'code': string;
-        'data': Array < UserFriendsVO > ;
-        'message': string;
-    }
+    //好友分组VO
     interface GroupVO {
         //数量
         'count': string;
@@ -433,6 +333,7 @@ declare namespace UserApi {
         //姓名
         'name': string;
     }
+    //当前登录用户的基本信息VO
     interface CurUserInfoVO {
         //身份证号
         'cardId': string;
@@ -463,6 +364,7 @@ declare namespace UserApi {
         //Id
         'userId': string;
     }
+    //当前登录用户的组织信息VO
     interface OrgVO {
         //是否是管理员
         'ifAdmin': string;
@@ -477,12 +379,7 @@ declare namespace UserApi {
         //类型
         'type': string;
     }
-    interface FrgroupVO {
-        //群组图标
-        'img': string;
-        //名称
-        'name': string;
-    }
+    //获取当前登录用户的组织VO
     interface OrgPeo1VO {
         //Id
         'id': string;
@@ -490,150 +387,5 @@ declare namespace UserApi {
         'img': string;
         //姓名
         'name': string;
-    }
-    interface JsonResultSXLOfUserIdVO {
-        'code': string;
-        'data': UserIdVO;
-        'message': string;
-    }
-    class UserApiController {
-        public getConfimCodeOfEmail(email ? : string, ): Promise < {
-            response: http.ClientResponse;body: JsonResultSXLOfEmailVO;
-        } > ;
-        public captcha(randomNum ? : string, ): Promise < {
-            response: http.ClientResponse;body: JsonResultSXLOfstring;
-        } > ;
-        public getConfimCode(telNum ? : string, ): Promise < {
-            response: http.ClientResponse;body: JsonResultSXLOfstring;
-        } > ;
-        public findByFriend(XASPSESSION ? : string, ): Promise < {
-            response: http.ClientResponse;body: JsonResultSXLOfListOfUserFriend1VO;
-        } > ;
-        public confUserFriendsId(XASPSESSION ? : string, ): Promise < {
-            response: http.ClientResponse;body: JsonResultSXLOfListOfUserIdVO;
-        } > ;
-        public findByFriendOfLogin(XASPSESSION ? : string, ): Promise < {
-            response: http.ClientResponse;body: JsonResultSXLOfListOfUserFriendsVO;
-        } > ;
-        public queryUsers(name ? : string, XASPSESSION ? : string, ): Promise < {
-            response: http.ClientResponse;body: JsonResultSXLOfListOfOrgPeo1VO;
-        } > ;
-        public confEmail(email ? : string, confCode ? : string, ): Promise < {
-            response: http.ClientResponse;body: JsonResultSXLOfstring;
-        } > ;
-        public confTel(telNum ? : string, confCode ? : string, ): Promise < {
-            response: http.ClientResponse;body: JsonResultSXLOfstring;
-        } > ;
-        public queryFriends(name ? : string, XASPSESSION ? : string, ): Promise < {
-            response: http.ClientResponse;body: JsonResultSXLOfListOfUserFriendVO;
-        } > ;
-        public getUserId(XASPSESSION ? : string, ): Promise < {
-            response: http.ClientResponse;body: JsonResultSXLOfUserIdVO;
-        } > ;
-        public uniqueEmail(email ? : string, ): Promise < {
-            response: http.ClientResponse;body: JsonResultSXLOfstring;
-        } > ;
-        public uniqueTel(telNum ? : string, ): Promise < {
-            response: http.ClientResponse;body: JsonResultSXLOfstring;
-        } > ;
-        public uniqueConf(code ? : UserCodeVO, ): Promise < {
-            response: http.ClientResponse;body: JsonResultSXLOfReCofingVO;
-        } > ;
-        public concernUsers(userIds ? : string, XASPSESSION ? : string, ): Promise < {
-            response: http.ClientResponse;body: JsonResultSXLOfstring;
-        } > ;
-        public deleteConcernUsers(userIds ? : string, XASPSESSION ? : string, ): Promise < {
-            response: http.ClientResponse;body: JsonResultSXLOfstring;
-        } > ;
-        public queryConcernUsers(concernid ? : string, XASPSESSION ? : string, ): Promise < {
-            response: http.ClientResponse;body: JsonResultSXLOfListOfConcernVO;
-        } > ;
-        public currentUser(XASPSESSION ? : string, ): Promise < {
-            response: http.ClientResponse;body: JsonResultSXLOfCurUserInfoVO;
-        } > ;
-        public updateCurrent(userOrgVO ? : UserOrgVO, XASPSESSION ? : string, ): Promise < {
-            response: http.ClientResponse;body: JsonResultSXLOfUserIdVO;
-        } > ;
-        public currentUserOrgDepartment(XASPSESSION ? : string, ): Promise < {
-            response: http.ClientResponse;body: JsonResultSXLOfListOfOrgUser1VO;
-        } > ;
-        public orgs(XASPSESSION ? : string, ): Promise < {
-            response: http.ClientResponse;body: JsonResultSXLOfListOfOrgVO;
-        } > ;
-        public changePwd(userPassword ? : UserPassword, XASPSESSION ? : string, ): Promise < {
-            response: http.ClientResponse;body: JsonResultSXLOfstring;
-        } > ;
-        public getNewPwdByEmail(resetPwsEmailVO ? : ResetPwsEmailVO, ): Promise < {
-            response: http.ClientResponse;body: JsonResultSXLOfstring;
-        } > ;
-        public getNewPwdByTelNum(resetPwsVO ? : ResetPwsVO, ): Promise < {
-            response: http.ClientResponse;body: JsonResultSXLOfstring;
-        } > ;
-        public currentUserFromName(userName ? : string, ): Promise < {
-            response: http.ClientResponse;body: JsonResultSXLOfListOfCurrUserNameVO;
-        } > ;
-        public getUserInf(userId ? : string, ): Promise < {
-            response: http.ClientResponse;body: JsonResultSXLOfCurUserInfoVO;
-        } > ;
-        public addFriends(userIds ? : string, XASPSESSION ? : string, ): Promise < {
-            response: http.ClientResponse;body: JsonResultSXLOfstring;
-        } > ;
-        public deleteFriends(userIds ? : string, XASPSESSION ? : string, ): Promise < {
-            response: http.ClientResponse;body: JsonResultSXLOfstring;
-        } > ;
-        public getFriGroup(XASPSESSION ? : string, ): Promise < {
-            response: http.ClientResponse;body: JsonResultSXLOfArrayListOfGroupVO;
-        } > ;
-        public createFrgroup_1(frgroupvo ? : FrgroupVO, XASPSESSION ? : string, ): Promise < {
-            response: http.ClientResponse;body: JsonResultSXLOfFrgroup;
-        } > ;
-        public searchGroup(id: string, ): Promise < {
-            response: http.ClientResponse;body: JsonResultSXLOfListOfGroupVO;
-        } > ;
-        public createFrgroup(id ? : string, name ? : string, XASPSESSION ? : string, ): Promise < {
-            response: http.ClientResponse;body: JsonResultSXLOfGroupIdVO;
-        } > ;
-        public delgroup(id: string, XASPSESSION ? : string, ): Promise < {
-            response: http.ClientResponse;body: JsonResultSXLOfstring;
-        } > ;
-        public addMember(frgroupMemb ? : FrGroupMemb, ): Promise < {
-            response: http.ClientResponse;body: JsonResultSXLOfstring;
-        } > ;
-        public updateFrgroupMember(frgroupMemberId: string, alias: string, ): Promise < {
-            response: http.ClientResponse;body: JsonResultSXLOfstring;
-        } > ;
-        public searchCalendarsByCurrentUser(groupId: string, ): Promise < {
-            response: http.ClientResponse;body: JsonResultSXLOfListOfFrgroupMemberVO;
-        } > ;
-        public delMember(ids: string, XASPSESSION ? : string, ): Promise < {
-            response: http.ClientResponse;body: JsonResultSXLOfstring;
-        } > ;
-        public ldapListen(): Promise < {
-            response: http.ClientResponse;body: JsonResultSXLOfstring;
-        } > ;
-        public getforgs(XASPSESSION ? : string, ): Promise < {
-            response: http.ClientResponse;body: JsonResultSXLOfListOfOrgOnlyVO;
-        } > ;
-        public registPersion(user ? : User, ): Promise < {
-            response: http.ClientResponse;body: JsonResultSXLOfUserIdVO;
-        } > ;
-        public queryUsercode(userCode ? : string, XASPSESSION ? : string, ): Promise < {
-            response: http.ClientResponse;body: JsonResultSXLOfstring;
-        } > ;
-        public queryUseremail(userEmail ? : string, XASPSESSION ? : string, ): Promise < {
-            response: http.ClientResponse;body: JsonResultSXLOfstring;
-        } > ;
-        public queryUsertel(userTel ? : string, XASPSESSION ? : string, ): Promise < {
-            response: http.ClientResponse;body: JsonResultSXLOfstring;
-        } > ;
-        public queryUserCode(): Promise < {
-            response: http.ClientResponse;body: JsonResultSXLOfListOfUserCode1VO;
-        } > ;
-        public loginByweixin(userId ? : string, ): Promise < {
-            response: http.ClientResponse;body: JsonResultSXLOfUriVO;
-        } > ;
-        public setAdmin(userId ? : string, orgId ? : string, ifAdmin ? : string, ): Promise < {
-            response: http.ClientResponse;body: JsonResultSXLOfstring;
-        } > ;
     }
 }

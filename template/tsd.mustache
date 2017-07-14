@@ -7,28 +7,26 @@
  * https://github.com/weicracker/swagger-yaml-to-d.ts
  * Do not edit the class manually.
  */
-
+/*
 {{#imports}}
 /// <reference types="{{&.}}" />
 {{/imports}}
-
+*/
 declare namespace {{{className}}} {
     {{#definitions}}
-        interface {{name}}{
-            {{#tsType}}
-            {{#properties}}
-                {{#description}}
-                    //{{description}}
-                {{/description}}
-                '{{name}}': {{^isArray}}{{^isObject}}{{^isRef}}{{tsType}}{{/isRef}}{{/isObject}}{{/isArray}}{{#isArray}}{{#elementType}}Array<{{target}}>{{/elementType}}{{^elementType}}Array<any>{{/elementType}}{{/isArray}}{{#isObject}}{{#elementType}}{{target}}{{/elementType}}{{^elementType}}any{{/elementType}}{{/isObject}}{{#isRef}}{{target}}{{/isRef}};
-            {{/properties}}
-            {{/tsType}}
-        }
+        {{#description}}
+            //{{description}}
+            interface {{name}}{
+                {{#tsType}}
+                {{#properties}}
+                    {{#description}}
+                        //{{description}}
+                    {{/description}}
+                    '{{name}}': {{^isArray}}{{^isObject}}{{^isRef}}{{tsType}}{{/isRef}}{{/isObject}}{{/isArray}}{{#isArray}}{{#elementType}}Array<{{target}}>{{/elementType}}{{^elementType}}Array<any>{{/elementType}}{{/isArray}}{{#isObject}}{{#elementType}}{{target}}{{/elementType}}{{^elementType}}any{{/elementType}}{{/isObject}}{{#isRef}}{{target}}{{/isRef}};
+                {{/properties}}
+                {{/tsType}}
+            }
+        {{/description}}
     {{/definitions}}
-    class {{{className}}}Controller {
-        {{#methods}}
-            public {{methodName}}({{#parameters}}{{^isSingleton}}{{&name}}{{&cardinality}}: {{>type}},{{/isSingleton}}{{/parameters}}): Promise<{ response: http.ClientResponse; {{#returnType}}body: {{{returnType}}}; {{/returnType}}{{^returnType}}body?: any; {{/returnType}} }>;
-        {{/methods}}
-    }
 }
 

@@ -1,0 +1,40 @@
+{
+    "spaceName":"task",
+    "className":"TaskService",
+    "description":"TaskService 服务",
+    "api":"TaskApi",
+    "version":"1.0.0",
+    "descriptions":[
+        {
+            "name":"testInterface",
+            "description":"测试接口",
+            "tsType":{
+                "isEnum": false,
+                "tsType": "object",
+                "properties":[{
+                    "isEnum": false,
+                    "tsType": "string",
+                    "isRef": false,
+                    "isObject": false,
+                    "isArray": false,
+                    "isAtomic": true,
+                    "name": "jiwei"
+                }]
+            }
+        }
+    ],
+    "methods":[
+        {
+            "name":"getMyTasks",
+            "description":"获取我的任务列表",
+            "parameters":[{
+                "name":"now",
+                "description":"获取今天的任务",
+                "type": "string",
+                "required":true,
+                "isSingleton":true
+            }],
+            "return":"JsonResultSXLOfCurUserInfoVO"
+        }
+    ]
+}
