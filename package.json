@@ -9,6 +9,8 @@
   "dependencies": {
     "electron-docs-linter": "^2.3.3",
     "electron-typescript-definitions": "^1.2.7",
+    "fs-extra": "^3.0.1",
+    "request": "^2.81.0",
     "swagger-js-codegen": "^1.10.1"
   }
 }
