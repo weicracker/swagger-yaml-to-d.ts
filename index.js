@@ -13,7 +13,7 @@ for( let key in httpURL){
         let source = useHttp(swagger,filename);
         let filePath = `${__dirname}/${key}/api.d.ts`;
         fsextra.outputFileSync(filePath, tsSourceCode, "UTF-8");
-        console.log(`已完成${i++}个任务，当前正在执行${key}模块,共计${Object.keys(httpURL).length}`)
+        console.log(`已完成${++i}个任务，当前正在执行${key}模块,共计${Object.keys(httpURL).length}`)
     })
     
     if(Object.keys(httpURL).length==i){
